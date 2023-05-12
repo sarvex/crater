@@ -78,11 +78,7 @@ for (gh_or_reg, name), (result, count) in sames.iteritems():
             continue
         org, repo = name.split('.')
         ghlines.append('"{}/{}" = {{ {} = true }}'.format(org, repo, skipkind))
-    else:
-        if name.count('.') > 1:
-            # Can't be bothered figuring this out - probably means the crate version had
-            # a -beta1 or something
-            continue
+    elif name.count('.') <= 1:
         reglines.append('{} = {{ {} = true }}'.format(name, skipkind))
     #print '|'.join((gh_or_reg, name)), result, count
 ghlines.sort()
